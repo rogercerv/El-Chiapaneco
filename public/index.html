@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#17231d"><meta name="description" content="Panel local de menú, mesas y pedidos de El Chiapaneco.">
+<title>El Chiapaneco | Restaurante</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23d59b42'/%3E%3Cpath d='M10 28 20 8l10 20h-6l-4-8-4 8z' fill='%2317231d'/%3E%3C/svg%3E">
+<style>
+:root{--ink:#17231d;--ink2:#24352c;--paper:#f5f3ed;--white:#fffefa;--gold:#d59b42;--gold2:#f0c979;--muted:#777d75;--line:#e6e2d8;--green:#52755b;--red:#a44f42;--shadow:0 14px 34px #17231d12}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #d59b4270;outline-offset:2px}.shell{min-height:100vh;display:grid;grid-template-columns:248px 1fr}.sidebar{background:var(--ink);color:white;padding:25px 17px;display:flex;flex-direction:column;gap:26px}.brand{display:flex;align-items:center;gap:12px;padding:0 8px}.brand-mark{width:42px;height:42px;border-radius:14px;background:var(--gold);color:var(--ink);display:grid;place-items:center;font-weight:900;font-size:23px}.brand strong{display:block;font-family:Georgia,serif;font-size:20px;letter-spacing:.2px}.brand small{color:#bac5bb;font-size:12px}.nav{display:grid;gap:6px}.nav button{border:0;background:transparent;color:#d0d8d1;text-align:left;padding:12px 14px;border-radius:11px;display:flex;gap:12px;align-items:center;font-size:15px}.nav button.active,.nav button:hover{background:#ffffff15;color:white}.nav .ico{width:22px;text-align:center;color:var(--gold2);font-size:18px}.side-note{margin-top:auto;border:1px solid #ffffff24;border-radius:13px;padding:13px;color:#c6cec7;font-size:13px}.side-note b{color:var(--gold2);display:block;margin-bottom:4px}.main{min-width:0;padding:28px clamp(18px,3vw,44px) 44px}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px;gap:12px}.eyebrow{color:var(--muted);font-size:13px}.topbar h1{font:700 clamp(25px,3vw,34px)/1.1 Georgia,serif;margin:4px 0 0}.top-right{display:flex;gap:10px;align-items:center}.clock{background:var(--white);border:1px solid var(--line);padding:9px 13px;border-radius:10px;color:var(--muted);font-size:13px}.primary,.secondary,.ghost,.danger{border-radius:10px;padding:10px 14px;font-weight:650;border:1px solid transparent}.primary{background:var(--ink);color:white}.primary:hover{background:var(--ink2)}.secondary{background:#f4e7ca;color:#594118;border-color:#ecd6a6}.ghost{background:var(--white);border-color:var(--line);color:var(--ink)}.danger{background:#f8e9e5;color:#813a32;border-color:#efcfc7}.view{display:none}.view.active{display:block}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:23px}.stat{background:var(--white);border:1px solid var(--line);border-radius:15px;padding:17px 19px;box-shadow:var(--shadow)}.stat span{font-size:13px;color:var(--muted)}.stat strong{display:block;font-size:27px;line-height:1.2;margin-top:5px}.stat small{color:var(--muted)}.panel{background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:19px}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}.panel h2{font:700 21px Georgia,serif;margin:0}.panel h3{margin:0;font-size:16px}.muted{color:var(--muted)}.section-title{display:flex;align-items:end;justify-content:space-between;margin:7px 0 15px}.section-title h2{font:700 24px Georgia,serif;margin:0}.section-title p{margin:4px 0 0;color:var(--muted);font-size:14px}.table-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.table-card{background:var(--white);border:1px solid var(--line);border-radius:14px;text-align:left;padding:15px;min-height:127px;transition:.15s;box-shadow:0 6px 20px #17231d08}.table-card:hover{transform:translateY(-2px);border-color:#d7b877}.table-card.selected{border:2px solid var(--gold);padding:14px}.table-card.occupied{background:#f2f6ef}.table-top{display:flex;justify-content:space-between;align-items:center}.table-num{font:700 19px Georgia,serif}.badge{font-size:12px;border-radius:99px;padding:4px 8px;background:#e6eee4;color:#45634c}.badge.free{background:#f0eee8;color:#72776f}.table-card p{margin:13px 0 0;color:var(--muted);font-size:13px}.table-card strong{display:block;margin-top:5px;font-size:14px}.order-layout{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(300px,.85fr);gap:17px;align-items:start}.category-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}.chip{border:1px solid var(--line);border-radius:99px;background:white;color:#4f5b51;padding:7px 12px;font-size:13px}.chip.active{background:var(--ink);color:white;border-color:var(--ink)}.product-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product{border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;align-items:center;justify-content:space-between;gap:8px}.product h3{font-size:14px;margin:0 0 3px}.product small{font-size:12px;color:var(--muted)}.product .add{border:0;width:34px;height:34px;border-radius:10px;background:#f5e8cb;color:#654a19;font-size:21px;flex:none}.cart{position:sticky;top:15px}.cart-empty{border:1px dashed #d8d3c6;border-radius:11px;padding:20px;text-align:center;color:var(--muted);font-size:14px}.cart-lines{display:grid;gap:9px;margin:12px 0}.cart-line{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;border-bottom:1px solid var(--line);padding-bottom:9px;font-size:14px}.qty{display:flex;align-items:center;gap:6px}.qty button{border:1px solid var(--line);background:white;border-radius:7px;width:26px;height:26px}.total{display:flex;justify-content:space-between;font-weight:750;border-top:1px solid var(--line);padding-top:13px;margin:13px 0}.full{width:100%}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:13px;font-weight:650}.field select,.field input{width:100%;border:1px solid var(--line);background:white;border-radius:9px;padding:10px 11px;color:var(--ink)}.orders{display:grid;gap:11px}.order-card{border:1px solid var(--line);border-radius:13px;padding:15px;display:grid;grid-template-columns:1fr auto;gap:12px}.order-card h3{margin:0;font-size:15px}.order-card p{margin:5px 0;color:var(--muted);font-size:13px}.order-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap;justify-content:end}.order-actions button{padding:7px 10px;font-size:12px}.empty{padding:27px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}.menu-admin{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.menu-row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:11px}.menu-row b{font-size:14px}.menu-row span{font-size:13px;color:var(--muted)}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);background:var(--ink);color:white;padding:11px 16px;border-radius:10px;opacity:0;transition:.2s;pointer-events:none;box-shadow:var(--shadow);z-index:5}.toast.show{opacity:1;transform:translate(-50%,0)}.warning{font-size:13px;background:#fff4db;color:#6b511d;border:1px solid #f0d99c;border-radius:10px;padding:11px 13px;margin:12px 0 0}.footer{margin-top:18px;font-size:12px;color:var(--muted)}@media(max-width:950px){.shell{grid-template-columns:205px 1fr}.table-grid{grid-template-columns:repeat(3,1fr)}.order-layout{grid-template-columns:1fr}.cart{position:static}}@media(max-width:690px){.shell{display:block}.sidebar{padding:13px 14px;gap:13px}.brand{padding:0 3px}.nav{display:flex;overflow-x:auto}.nav button{white-space:nowrap;padding:9px 12px}.side-note{display:none}.main{padding:20px 15px 35px}.clock{display:none}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:21px}.table-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.product-list,.menu-admin{grid-template-columns:1fr}.topbar{align-items:flex-start}.top-right{flex-direction:column;align-items:stretch}.top-right .primary{white-space:nowrap}.order-card{grid-template-columns:1fr}.order-actions{justify-content:start}}
+ .table-card.occupied{background:#fff0ed!important;border-color:#d88679!important}.table-card.available{background:#edf6ed!important;border-color:#a9c8a9!important}.table-card.available:hover{border-color:#6c9a6c!important}.badge.occupied-badge{background:#f5d8d2;color:#8a3a30}.badge.available-badge{background:#dceedd;color:#38623b}
+
+/* Pantalla de acceso */
+#login-screen{position:fixed;inset:0;background:var(--ink);display:grid;place-items:center;z-index:9999;padding:20px}
+.login-box{width:min(390px,100%);background:var(--white);border-radius:18px;padding:30px;box-shadow:0 20px 60px #0005}
+.login-brand{text-align:center;margin-bottom:22px}
+.login-brand .brand-mark{margin:0 auto 12px}
+.login-brand h2{font:700 27px Georgia,serif;margin:0 0 5px}
+.login-brand p{margin:0;color:var(--muted);font-size:14px}
+.login-box .field{margin:13px 0}
+.login-error{display:none;background:#f8e9e5;color:#813a32;border:1px solid #efcfc7;border-radius:9px;padding:9px 11px;font-size:13px;margin-bottom:10px}
+.login-error.show{display:block}
+#app-shell.locked{display:none!important}
+.logout-btn{white-space:nowrap}
+
+/* Administración de menú y mesas */
+.admin-action-label{font-size:12px;color:var(--muted);margin-top:3px}
+.admin-actions{display:flex;gap:8px;flex-wrap:wrap}
+.admin-modal{position:fixed;inset:0;background:#17231dcc;display:none;place-items:center;padding:18px;z-index:10000}
+.admin-modal.show{display:grid}
+.admin-box{width:min(760px,100%);max-height:90vh;overflow:auto;background:var(--white);border-radius:17px;padding:20px;box-shadow:0 24px 70px #0006}
+.admin-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}
+.admin-head h2{font:700 23px Georgia,serif;margin:0}
+.admin-tabs{display:flex;gap:7px;margin-bottom:15px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.admin-tab{border:1px solid var(--line);background:white;border-radius:9px;padding:8px 12px}
+.admin-tab.active{background:var(--ink);color:white;border-color:var(--ink)}
+.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.admin-form .wide{grid-column:1/-1}
+.admin-list{display:grid;gap:8px;margin-top:15px}
+.admin-item{border:1px solid var(--line);border-radius:11px;padding:11px;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.admin-item-info{min-width:0}
+.admin-item-info b{display:block;font-size:14px}
+.admin-item-info span{font-size:12px;color:var(--muted)}
+.admin-item-actions{display:flex;gap:6px;flex:none}
+.admin-item-actions button{padding:7px 9px;font-size:12px}
+.modal-close{border:0;background:#f0eee8;border-radius:9px;width:34px;height:34px;font-size:20px}
+@media(max-width:690px){.admin-form{grid-template-columns:1fr}.admin-form .wide{grid-column:auto}.admin-item{align-items:flex-start;flex-direction:column}.admin-item-actions{width:100%}}
+.restaurant-banner{display:block;width:100%;max-width:520px;height:auto;margin:0 auto 16px;border-radius:12px;border:1px solid var(--line);box-shadow:0 8px 24px #17231d18}.sidebar .brand-image{display:block;padding:0 2px}.sidebar .brand-image img{display:block;width:100%;height:auto;border-radius:10px}.login-brand .restaurant-banner{max-width:460px}
+
+</style>
+</head>
+<body>
+
+<div id="login-screen">
+  <form class="login-box" onsubmit="return doLogin(event)">
+    <div class="login-brand">
+      <img class="restaurant-banner" src="el-chiapaneco-banner.png" alt="El Chiapaneco · Restaurante · Sabores de Chiapas">
+      <p>Acceso al panel de servicio</p>
+    </div>
+    <div id="login-error" class="login-error">Usuario o contraseña incorrectos.</div>
+    <div class="field">
+      <label for="login-user">Usuario</label>
+      <input id="login-user" autocomplete="username" required placeholder="Usuario">
+    </div>
+    <div class="field">
+      <label for="login-pass">Contraseña</label>
+      <input id="login-pass" type="password" autocomplete="current-password" required placeholder="Contraseña">
+    </div>
+    <button class="primary full" type="submit">Ingresar</button>
+  </form>
+</div>
+<div class="shell locked" id="app-shell">
+<aside class="sidebar">
+  <div class="brand brand-image"><img src="el-chiapaneco-banner.png" alt="El Chiapaneco · Restaurante · Sabores de Chiapas"></div>
+  <nav class="nav" aria-label="Secciones">
+    <button class="active" data-view="inicio"><span class="ico">▦</span>Resumen</button>
+    <button data-view="mesas"><span class="ico">▤</span>Mesas</button>
+    <button data-view="pedidos"><span class="ico">◷</span>Pedidos <span id="nav-count"></span></button>
+    <button data-view="menu"><span class="ico">☷</span>Menú</button>
+  </nav>
+  <div class="side-note"><b>Datos en la nube</b>Los pedidos se guardan en la base del restaurante.</div>
+</aside>
+<main class="main">
+  <header class="topbar"><div><div class="eyebrow">Restaurante · Panel de servicio</div><h1 id="page-title">Resumen</h1></div><div class="top-right"><span class="clock" id="today"></span><button class="secondary admin-only" id="admin-menu-btn" onclick="openAdminProducts()" style="display:none">⚙ Administrar productos</button><button class="secondary admin-only" id="admin-tables-btn" onclick="openAdminTables()" style="display:none">▤ Administrar mesas</button><button class="primary" onclick="go('pedidos')">＋ Nuevo pedido</button><button class="ghost logout-btn" onclick="logout()">Cerrar sesión</button></div></header>
+
+  <section class="view active" id="view-inicio">
+    <div class="stats"><div class="stat"><span>Mesas ocupadas</span><strong id="stat-tables">0 / 12</strong><small>Mesas con pedido abierto</small></div><div class="stat"><span>Pedidos abiertos</span><strong id="stat-orders">0</strong><small>En atención</small></div><div class="stat"><span>Total abierto</span><strong id="stat-total">$0</strong><small>Pedidos activos</small></div><button class="stat" style="text-align:left;border:1px solid var(--line);cursor:pointer" onclick="go('ventas')"><span>Venta total del día</span><strong id="stat-sales-today">$0</strong><small><span id="stat-orders-today">0</span> pedidos · Ver detalle →</small></button></div>
+    <div class="section-title"><div><h2>Mesas</h2><p>Selecciona una mesa para empezar un pedido.</p></div><button class="ghost" onclick="go('mesas')">Ver todas</button></div>
+    <div class="table-grid" id="home-tables"></div>
+    <div class="panel" style="margin-top:18px"><div class="panel-head"><h2>Pedidos recientes</h2><button class="ghost" onclick="go('pedidos')">Ver pedidos</button></div><div class="orders" id="home-orders"></div></div>
+  </section>
+
+  <section class="view" id="view-mesas">
+    <div class="section-title"><div><h2>Control de mesas</h2><p>Elige una mesa disponible para abrir una cuenta.</p></div></div>
+    <div class="table-grid" id="all-tables"></div>
+  </section>
+
+  <section class="view" id="view-pedidos">
+    <div class="section-title"><div><h2>Nuevo pedido</h2><p>Selecciona la mesa y agrega los productos.</p></div></div>
+    <div class="order-layout">
+      <div class="panel"><div class="panel-head"><h2>Menú</h2><span class="muted" id="chosen-label">Elige una mesa →</span></div><div class="category-row" id="categories"></div><div class="product-list" id="products"></div><div class="warning">Los precios y nombres se transcribieron de las fotos y requieren confirmación. Los marcados “Por confirmar” no suman al total.</div></div>
+      <div class="panel cart"><div class="panel-head"><h2>Cuenta</h2><button class="ghost" onclick="clearCart()">Vaciar</button></div><div class="field"><label for="table-select">Mesa</label><select id="table-select" onchange="selectTable(this.value)"></select></div><div id="cart-content"></div><div class="field"><label for="notes">Nota para cocina (opcional)</label><input id="notes" maxlength="120" placeholder="Ej. sin cebolla"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><button class="primary full" id="send-order" onclick="submitOrder()">Enviar pedido</button><button class="ghost full" onclick="printCurrentOrder()">🖨️ Imprimir pedido</button></div></div>
+    </div>
+    <div class="panel" style="margin-top:18px"><div class="panel-head"><h2>Pedidos en curso</h2></div><div class="orders" id="active-orders"></div></div>
+  </section>
+
+  <section class="view" id="view-menu">
+    <div class="section-title"><div><h2>Menú capturado</h2><p>Platillos y precios visibles en las imágenes compartidas.</p></div></div>
+    <div class="category-row" id="menu-categories"></div><div class="panel"><div class="menu-admin" id="menu-list"></div><div class="warning">Revisar contra el menú original antes de publicar: algunas letras y cifras no se distinguen con claridad.</div></div>
+  </section>
+  <section class="view" id="view-ventas">
+    <div class="section-title"><div><h2>Venta total del día</h2><p id="sales-date"></p></div><button class="ghost" onclick="go('inicio')">Volver al resumen</button></div>
+    <div class="stats"><div class="stat"><span>Venta total del día</span><strong id="sales-total">$0</strong><small>Suma de pedidos abiertos y cerrados de hoy</small></div><div class="stat"><span>Pedidos del día</span><strong id="sales-count">0</strong><small>Cuenta cada pedido registrado hoy</small></div><div class="stat"><span>Pedidos cerrados</span><strong id="sales-closed">0</strong><small>Pedidos marcados como cuenta cerrada</small></div></div>
+    <div class="panel"><div class="panel-head"><h2>Pedidos registrados hoy</h2></div><div class="orders" id="today-orders"></div></div>
+  </section>
+  <p class="footer">Prototipo local de El Chiapaneco · No procesa pagos ni sincroniza datos entre dispositivos.</p>
+</main></div>
+<div class="admin-modal" id="admin-modal" onclick="if(event.target===this)closeAdmin()">
+  <div class="admin-box">
+    <div class="admin-head">
+      <h2>Administrar restaurante</h2>
+      <button class="modal-close" onclick="closeAdmin()" aria-label="Cerrar">×</button>
+    </div>
+    <div class="admin-tabs">
+      <button class="admin-tab active" id="tab-products" onclick="adminTab('products')">Productos</button>
+      <button class="admin-tab" id="tab-tables" onclick="adminTab('tables')">Mesas</button>
+    </div>
+
+    <div id="admin-products">
+      <form class="admin-form" onsubmit="return saveProduct(event)">
+        <div class="field"><label for="admin-name">Nombre del producto</label><input id="admin-name" required maxlength="100" placeholder="Ej. Camarones al ajo"></div>
+        <div class="field"><label for="admin-price">Precio</label><input id="admin-price" type="number" min="0" step="1" placeholder="Ej. 130"></div>
+        <div class="field"><label for="admin-category">Categoría</label><input id="admin-category" required maxlength="60" placeholder="Ej. Camarones"></div>
+        <div class="field"><label for="admin-note">Nota (opcional)</label><input id="admin-note" maxlength="120" placeholder="Ej. Precio según tamaño"></div>
+        <input type="hidden" id="admin-edit-index" value="">
+        <div class="wide admin-actions">
+          <button class="primary" type="submit" id="admin-save-btn">＋ Agregar producto</button>
+          <button class="ghost" type="button" onclick="clearProductForm()">Limpiar</button>
+        </div>
+      </form>
+      <div class="admin-list" id="admin-product-list"></div>
+    </div>
+
+    <div id="admin-tables" style="display:none">
+      <div class="panel" style="box-shadow:none">
+        <div class="panel-head"><h3>Mesas configuradas</h3><span class="muted" id="admin-table-count"></span></div>
+        <p class="muted">Agrega mesas o elimina la última mesa. Una mesa ocupada no se puede eliminar.</p>
+        <div class="admin-actions">
+          <button class="primary" onclick="addTable()">＋ Agregar mesa</button>
+          <button class="danger" onclick="removeTable()">− Quitar última mesa</button>
+        </div>
+        <div class="admin-list" id="admin-table-list"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+
+const LOGIN_USERS = {
+  'rogercerv@gmail.com': {password:'Passr0g$', role:'Administrador'},
+  'rogercerv@hotmail.com': {password:'Us3r01', role:'Empleado'}
+};
+let currentUser=null;
+
+function showApp(){
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('app-shell').classList.remove('locked');
+  const isAdmin=currentUser&&currentUser.role==='Administrador';
+  const b=document.getElementById('admin-menu-btn');
+  const t=document.getElementById('admin-tables-btn');
+  if(b)b.style.display=isAdmin?'inline-block':'none';
+  if(t)t.style.display=isAdmin?'inline-block':'none';
+}
+function doLogin(event){
+  event.preventDefault();
+  const user=document.getElementById('login-user').value.trim();
+  const pass=document.getElementById('login-pass').value;
+  const error=document.getElementById('login-error');
+  const account=LOGIN_USERS[user];
+  if(account && pass===account.password){
+    currentUser={user,role:account.role};
+    sessionStorage.setItem('chiapaneco_logged_in',JSON.stringify(currentUser));
+    error.classList.remove('show');
+    showApp();
+  }else{
+    error.classList.add('show');
+    document.getElementById('login-pass').value='';
+    document.getElementById('login-pass').focus();
+  }
+  return false;
+}
+function logout(){
+  sessionStorage.removeItem('chiapaneco_logged_in');
+  location.reload();
+}
+try{
+  const saved=JSON.parse(sessionStorage.getItem('chiapaneco_logged_in')||'null');
+  if(saved&&LOGIN_USERS[saved.user]){currentUser=saved;showApp();}
+}catch(e){}
+
+let menu=[
+ {cat:'Cocteles de mariscos',name:'Cóctel de camarón',price:70, note:'Chico · mediano y grande por confirmar'},
+ {cat:'Cocteles de mariscos',name:'Cóctel de camarón y ostión',price:70,note:'Chico · mediano y grande por confirmar'},
+ {cat:'Cocteles de mariscos',name:'Cóctel de camarón y caracol',price:70,note:'Chico · mediano y grande por confirmar'},
+ {cat:'Cocteles de mariscos',name:'Vuelve a la vida',price:70,note:'Chico · mediano y grande por confirmar'},
+ {cat:'Sopas',name:'Consomé de camarón',price:null},
+ {cat:'Sopas',name:'Sopa de mariscos',price:120},
+ {cat:'Sopas',name:'Consomé de camarón pelado',price:130},
+ {cat:'Camarones',name:'Al mojo de ajo',price:115},
+ {cat:'Camarones',name:'Al mojo de ajo pelados',price:130},
+ {cat:'Camarones',name:'Empanizados',price:120},
+ {cat:'Camarones',name:'Rancheros',price:130},
+ {cat:'Camarones',name:'Para pelar',price:130},
+ {cat:'Camarones',name:'Gratinados',price:130},
+ {cat:'Camarones',name:'Ceviche de camarón',price:130},
+ {cat:'Camarones',name:'Camarones en agua chile',price:130},
+ {cat:'Camarones',name:'Camarones a la costa azul',price:130},
+ {cat:'Ensaladas',name:'Ensalada de camarón',price:120},
+ {cat:'Ensaladas',name:'Ensalada de mariscos',price:120,note:'Camarón, macabil y pulpo'},
+ {cat:'Ensaladas',name:'Ensalada de macabil',price:115},
+ {cat:'Pulpos',name:'Encebollado',price:130},
+ {cat:'Pulpos',name:'A la mexicana',price:130},
+ {cat:'Pulpos',name:'Al mojo de ajo',price:130},
+ {cat:'Quesadillas',name:'Quesadilla sencilla (orden de 3)',price:70},
+ {cat:'Quesadillas',name:'Quesadillas con chorizo o jamón',price:80},
+ {cat:'Quesadillas',name:'Quesadillas con queso o jamón',price:80},
+ {cat:'Quesadillas',name:'Queso fundido con jamón o chorizo',price:100},
+ {cat:'Quesadillas',name:'Queso fundido con champiñones o carne',price:120},
+ {cat:'Pescados y mariscos',name:'Lisa al mojo de ajo o al vapor',price:null,note:'Precio según tamaño'},
+ {cat:'Pescados y mariscos',name:'Mojarra al mojo de ajo',price:null,note:'Precio según tamaño'},
+ {cat:'Pescados y mariscos',name:'Mojarra en agua chile',price:null,note:'Precio según tamaño'},
+ {cat:'Pescados y mariscos',name:'Mojarra a la veracruzana',price:null,note:'Precio según tamaño'},
+ {cat:'Pescados y mariscos',name:'Robalo al mojo de ajo',price:115},
+ {cat:'Pescados y mariscos',name:'Filete de pescado empanizado',price:120},
+ {cat:'Pescados y mariscos',name:'Filete de pescado al mojo',price:130},
+ {cat:'Pescados y mariscos',name:'Hueva de lisas frescas',price:null,note:'Precio por confirmar'},
+ {cat:'Pescados y mariscos',name:'Fuente de mariscos',price:null,note:'Precio por confirmar'},
+ {cat:'Pescados y mariscos',name:'Fuente chica',price:null,note:'Precio por confirmar'},
+ {cat:'Carnes rojas',name:'Tampiqueña',price:135},
+ {cat:'Carnes rojas',name:'Carne asada',price:115},
+ {cat:'Carnes rojas',name:'Arrachera',price:115},
+ {cat:'Carnes rojas',name:'Tazajo',price:115},
+ {cat:'Carnes rojas',name:'Chorizo',price:115},
+ {cat:'Carnes rojas',name:'Punta de filete al albañil',price:130},
+ {cat:'Carnes rojas',name:'Milanesa de res',price:115},
+ {cat:'Especialidades a la parrilla',name:'Parrillada para 2 personas',price:290,note:'Tazajo, filete, ubre y chorizo'},
+ {cat:'Especialidades a la parrilla',name:'Parrillada para 4 personas',price:490,note:'Tazajo, filete, ubre y chorizo'},
+ {cat:'Bebidas sin alcohol',name:'Refrescos embotellados',price:25},
+ {cat:'Bebidas sin alcohol',name:'Agua de naranja, limón o tascalate (jarra)',price:90},
+ {cat:'Bebidas sin alcohol',name:'Naranjada, limonada o tascalate (vaso)',price:30},
+ {cat:'Desayunos',name:'Huevos con jamón, chorizo, tocino o a la mexicana',price:80},
+ {cat:'Desayunos',name:'Huevos rancheros o huevos motuleños',price:90},
+ {cat:'Desayunos',name:'Bistec a la mexicana',price:115}
+];
+let tableCount=12;
+let state={orders:[]};let selectedTable='';let category='Cocteles de mariscos';let cart=[];let menuFilter='Todos';
+async function api(path,options={}){let r=await fetch('/api'+path,{...options,headers:{'content-type':'application/json',...(options.headers||{})}});let data=await r.json().catch(()=>({}));if(!r.ok)throw Error(data.error||'Error al conectar con el servidor');return data}
+async function refreshOrders(){try{let d=await api('/orders');state.orders=d.orders||[];render()}catch(e){toast(e.message)}}
+async function loadRestaurantConfig(){try{let [m,t]=await Promise.all([api('/menu'),api('/tables')]);if(Array.isArray(m.products)&&m.products.length)menu=m.products;tableCount=Number(t.tableCount||12);render();}catch(e){toast('No se pudo cargar menú/mesas: '+e.message)}}
+async function saveOrder(order){return api('/orders',{method:'POST',body:JSON.stringify(order)})}
+async function saveStatus(id,status){return api('/orders/'+encodeURIComponent(id),{method:'PATCH',body:JSON.stringify({status})})}
+function money(n){return n==null?'Por confirmar':'$'+Number(n).toLocaleString('es-MX',{maximumFractionDigits:0})}function openOrders(){return state.orders.filter(o=>o.status!=='Cerrado')}function total(o){return o.items.reduce((s,i)=>s+(i.price||0)*i.qty,0)}function tableOpen(t){return openOrders().some(o=>o.table===t)}
+function toast(s){let e=document.getElementById('toast');e.textContent=s;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2200)}
+function go(name){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+name));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===name));let labels={inicio:'Resumen',mesas:'Mesas',pedidos:'Pedidos',menu:'Menú',ventas:'Ventas de hoy'};document.getElementById('page-title').textContent=labels[name];if(name==='pedidos'&&!selectedTable)selectedTable='';render();window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view)));
+function tableHTML(n){let t='Mesa '+n, o=openOrders().find(x=>x.table===t), selected=selectedTable===t;return `<button class="table-card ${o?'occupied':'available'} ${selected?'selected':''}" onclick="chooseTable('${t}')"><div class="table-top"><span class="table-num">${t}</span><span class="badge ${o?'occupied-badge':'available-badge'}">${o?'Ocupada':'Disponible'}</span></div><p>${o?'Pedido '+o.id:'Sin pedido abierto'}</p><strong>${o?money(total(o)):'Tocar para elegir'}</strong></button>`}
+function chooseTable(t){selectedTable=t;go('pedidos')};function selectTable(t){selectedTable=t;render()}
+function addItem(idx){let p=menu[idx];let old=cart.find(x=>x.name===p.name);if(old)old.qty++;else cart.push({name:p.name,price:p.price,qty:1});renderCart()}
+function qtyItem(idx,d){cart[idx].qty+=d;if(cart[idx].qty<=0)cart.splice(idx,1);renderCart()}function clearCart(){cart=[];renderCart()}
+async function submitOrder(){if(!selectedTable){toast('Selecciona una mesa');return}if(!cart.length){toast('Agrega al menos un platillo');return}let order={table:selectedTable,items:cart.map(x=>({...x})),notes:document.getElementById('notes').value.trim()};try{let saved=await saveOrder(order);cart=[];document.getElementById('notes').value='';await refreshOrders();toast('Pedido '+saved.order.id+' enviado para '+selectedTable)}catch(e){toast(e.message)}}
+async function updateStatus(id,status){try{await saveStatus(id,status);await refreshOrders();toast(status==='Cerrado'?'Cuenta cerrada y venta conservada':'Pedido actualizado')}catch(e){toast(e.message)}}
+function printTicket(o,type='order'){const isNote=type==='note'||type==='note_iva',withIva=type==='note_iva',date=new Date(o.closedAt||o.created),items=o.items||[],baseTotal=total(o),iva=withIva?baseTotal*.16:0,finalTotal=baseTotal+iva;const rows=items.map(i=>`<tr><td>${esc(i.name)}</td><td class="qty">${i.qty}</td><td class="price">${i.price==null?'Por confirmar':money(i.price*i.qty)}</td></tr>`).join('');const unitRows=items.map(i=>`<tr><td>${esc(i.name)}</td><td class="qty">${i.qty}</td><td class="price">${i.price==null?'Por confirmar':money(i.price)}</td><td class="price">${i.price==null?'Por confirmar':money(i.price*i.qty)}</td></tr>`).join('');const w=window.open('','_blank','width=430,height=700');if(!w){toast('El navegador bloqueó la ventana de impresión');return}w.document.write(`<!doctype html><html lang="es"><head><meta charset="utf-8"><title>${isNote?'Nota de consumo':'Pedido'} ${esc(o.id)}</title><style>body{font-family:Arial,sans-serif;width:80mm;margin:0 auto;padding:10px;color:#111;font-size:12px}h1{text-align:center;font-size:20px;margin:0 0 4px}h2{text-align:center;font-size:14px;margin:0 0 12px}p{margin:4px 0}.meta{border-top:1px dashed #777;border-bottom:1px dashed #777;padding:7px 0;margin:8px 0}table{width:100%;border-collapse:collapse;margin-top:8px}th,td{padding:5px 2px;border-bottom:1px solid #ddd;text-align:left;vertical-align:top}th{font-size:10px}.qty{text-align:center;width:28px}.price{text-align:right;white-space:nowrap}.totals{margin-top:8px;border-top:1px dashed #777;padding-top:7px}.line-total{display:flex;justify-content:space-between;padding:3px 0}.grand-total{display:flex;justify-content:space-between;font-weight:bold;font-size:16px;border-top:1px solid #777;padding-top:7px;margin-top:5px}.note{margin-top:10px;padding-top:8px;border-top:1px dashed #777}.foot{text-align:center;margin-top:14px;font-size:10px;color:#555}@media print{body{width:auto}.no-print{display:none}}</style></head><body><h1>El Chiapaneco</h1><h2>${isNote?`NOTA DE CONSUMO${withIva?' · IVA 16%':' · SIN IVA'}`:'PEDIDO PARA COCINA'}</h2><div class="meta"><p><b>Mesa:</b> ${esc(o.table)}</p><p><b>Pedido:</b> ${esc(o.id)}</p><p><b>Fecha:</b> ${date.toLocaleDateString('es-MX')}</p><p><b>Hora:</b> ${date.toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'})}</p><p><b>Estado:</b> ${esc(o.status)}</p></div>${isNote?`<table><thead><tr><th>Producto</th><th>Cant.</th><th>Precio</th><th>Importe</th></tr></thead><tbody>${unitRows}</tbody></table>`:`<table><thead><tr><th>Producto</th><th>Cant.</th><th>Importe</th></tr></thead><tbody>${rows}</tbody></table>`}${isNote?`<div class="totals"><div class="line-total"><span>Subtotal</span><span>${money(baseTotal)}</span></div>${withIva?`<div class="line-total"><span>IVA 16%</span><span>${money(iva)}</span></div>`:''}<div class="grand-total"><span>TOTAL</span><span>${money(finalTotal)}</span></div></div>`:`<div class="grand-total"><span>TOTAL</span><span>${money(baseTotal)}</span></div>`}${o.notes?`<div class="note"><b>Nota:</b> ${esc(o.notes)}</div>`:''}<div class="foot">${isNote?'Gracias por su visita.':'Preparar pedido según indicaciones.'}</div><script>window.onload=()=>{window.print();setTimeout(()=>window.close(),500)}<\/script></body></html>`);w.document.close();w.focus()}
+
+function printCurrentOrder(){if(!selectedTable){toast('Selecciona una mesa');return}const items=cart.map(x=>({...x}));if(!items.length){toast('El pedido está vacío');return}printTicket({id:'PREVISUALIZACIÓN',table:selectedTable,items,notes:document.getElementById('notes').value.trim(),status:'Por enviar',created:new Date().toISOString()},'order')}
+function cardHTML(o){let time=new Date(o.closedAt||o.created).toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'});return `<article class="order-card"><div><h3>${o.table} · Pedido ${o.id} <span class="badge">${o.status}</span></h3><p>${o.status==='Cerrado'?'Cerrado':'Abierto'} ${time} · ${o.items.map(i=>`${i.qty}× ${i.name}`).join(' · ')}${o.notes?' · Nota: '+esc(o.notes):''}</p><strong>${money(total(o))}</strong></div><div class="order-actions"><button class="ghost" onclick="printTicket(${JSON.stringify(o).replace(/\"/g,'&quot;')},'order')">🖨️ Imprimir pedido</button><button class="secondary" onclick="printTicket(${JSON.stringify(o).replace(/\"/g,'&quot;')},'note')">🧾 Nota sin IVA</button><button class="secondary" onclick="printTicket(${JSON.stringify(o).replace(/\"/g,'&quot;')},'note_iva')">🧾 Nota + IVA 16%</button>${o.status==='Recibido'?`<button class="secondary" onclick="updateStatus('${o.id}','Preparando')">Preparar</button>`:''}${o.status==='Preparando'?`<button class="secondary" onclick="updateStatus('${o.id}','Listo')">Marcar listo</button>`:''}${o.status==='Listo'?`<button class="secondary" onclick="updateStatus('${o.id}','Entregado')">Entregado</button>`:''}${o.status!=='Cerrado'?`<button class="ghost" onclick="updateStatus('${o.id}','Cerrado')">Cerrar y conservar venta</button>`:''}</div></article>`}
+function renderTables(){document.getElementById('home-tables').innerHTML=Array.from({length:8},(_,i)=>tableHTML(i+1)).join('');document.getElementById('all-tables').innerHTML=Array.from({length:tableCount},(_,i)=>tableHTML(i+1)).join('');document.getElementById('table-select').innerHTML='<option value="">Selecciona mesa…</option>'+Array.from({length:tableCount},(_,i)=>`<option value="Mesa ${i+1}" ${selectedTable==='Mesa '+(i+1)?'selected':''}>Mesa ${i+1}${tableOpen('Mesa '+(i+1))?' · ocupada':''}</option>`).join('');document.getElementById('chosen-label').textContent=selectedTable||'Elige una mesa →'}
+function renderCart(){let c=document.getElementById('cart-content');if(!cart.length){c.innerHTML='<div class="cart-empty">Tu cuenta está vacía.<br>Agrega platillos del menú.</div>';return}c.innerHTML=`<div class="cart-lines">${cart.map((i,n)=>`<div class="cart-line"><span>${esc(i.name)}<br><small class="muted">${money(i.price)}</small></span><span class="qty"><button onclick="qtyItem(${n},-1)" aria-label="Quitar uno">−</button>${i.qty}<button onclick="qtyItem(${n},1)" aria-label="Agregar uno">+</button></span><b>${i.price==null?'—':money(i.price*i.qty)}</b></div>`).join('')}</div><div class="total"><span>Total conocido</span><span>${money(cart.reduce((s,i)=>s+(i.price||0)*i.qty,0))}</span></div>`}
+function renderProducts(){let cats=[...new Set(menu.map(p=>p.cat))];document.getElementById('categories').innerHTML=cats.map(c=>`<button class="chip ${category===c?'active':''}" onclick="setCategory('${esc(c)}')">${esc(c)}</button>`).join('');document.getElementById('products').innerHTML=menu.map((p,i)=>({p,i})).filter(x=>x.p.cat===category).map(({p,i})=>`<div class="product"><div><h3>${esc(p.name)}</h3><small>${p.note?esc(p.note):esc(p.cat)}</small><br><b>${money(p.price)}</b></div><button class="add" onclick="addItem(${i})" aria-label="Agregar ${esc(p.name)}">+</button></div>`).join('')}
+function setCategory(c){category=c;renderProducts()}
+function renderMenu(){let cats=['Todos',...new Set(menu.map(p=>p.cat))];document.getElementById('menu-categories').innerHTML=cats.map(c=>`<button class="chip ${menuFilter===c?'active':''}" onclick="setMenuFilter('${esc(c)}')">${esc(c)}</button>`).join('');document.getElementById('menu-list').innerHTML=menu.filter(p=>menuFilter==='Todos'||p.cat===menuFilter).map(p=>`<div class="menu-row"><div><b>${esc(p.name)}</b><br><span>${esc(p.cat)}${p.note?' · '+esc(p.note):''}</span></div><strong>${money(p.price)}</strong></div>`).join('')}
+function setMenuFilter(c){menuFilter=c;renderMenu()}function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+
+async function openAdmin(){if(!currentUser||currentUser.role!=='Administrador'){toast('Solo el administrador puede realizar cambios');return}document.getElementById('admin-modal').classList.add('show');adminTab('products');await renderAdminProducts();renderAdminTables()}
+async function openAdminProducts(){await openAdmin();adminTab('products')}
+async function openAdminTables(){await openAdmin();adminTab('tables')}
+function closeAdmin(){document.getElementById('admin-modal').classList.remove('show');clearProductForm()}
+function adminTab(tab){const isProducts=tab==='products';document.getElementById('admin-products').style.display=isProducts?'block':'none';document.getElementById('admin-tables').style.display=isProducts?'none':'block';document.getElementById('tab-products').classList.toggle('active',isProducts);document.getElementById('tab-tables').classList.toggle('active',!isProducts);if(!isProducts)renderAdminTables()}
+function clearProductForm(){document.getElementById('admin-name').value='';document.getElementById('admin-price').value='';document.getElementById('admin-category').value='';document.getElementById('admin-note').value='';document.getElementById('admin-edit-index').value='';document.getElementById('admin-save-btn').textContent='＋ Agregar producto'}
+async function saveProduct(event){event.preventDefault();const name=document.getElementById('admin-name').value.trim();const cat=document.getElementById('admin-category').value.trim();const price=document.getElementById('admin-price').value.trim();const note=document.getElementById('admin-note').value.trim();if(!name||!cat){toast('Nombre y categoría son obligatorios');return false}const p={name,cat,price:price===''?null:Number(price),note};const idx=document.getElementById('admin-edit-index').value;try{if(idx===''){let d=await api('/menu',{method:'POST',body:JSON.stringify(p)});menu.push(d.product)}else{let d=await api('/menu/'+encodeURIComponent(menu[Number(idx)].id),{method:'PATCH',body:JSON.stringify(p)});menu[Number(idx)]=d.product}clearProductForm();render();renderAdminProducts();toast(idx===''?'Producto agregado':'Producto actualizado')}catch(e){toast(e.message)}return false}
+async function editProduct(idx){const p=menu[idx];document.getElementById('admin-name').value=p.name||'';document.getElementById('admin-price').value=p.price==null?'':p.price;document.getElementById('admin-category').value=p.cat||'';document.getElementById('admin-note').value=p.note||'';document.getElementById('admin-edit-index').value=idx;document.getElementById('admin-save-btn').textContent='Guardar cambios';document.getElementById('admin-name').focus()}
+async function deleteProduct(idx){if(!confirm('¿Eliminar "'+menu[idx].name+'"?'))return;try{await api('/menu/'+encodeURIComponent(menu[idx].id),{method:'DELETE'});menu.splice(idx,1);render();renderAdminProducts();toast('Producto eliminado')}catch(e){toast(e.message)}}
+async function renderAdminProducts(){const list=document.getElementById('admin-product-list');if(!menu.length){list.innerHTML='<div class="empty">No hay productos.</div>';return}list.innerHTML=menu.map((p,i)=>`<div class="admin-item"><div class="admin-item-info"><b>${esc(p.name)}</b><span>${esc(p.cat)} · ${money(p.price)}</span></div><div class="admin-item-actions"><button class="ghost" onclick="editProduct(${i})">Editar</button><button class="danger" onclick="deleteProduct(${i})">Eliminar</button></div></div>`).join('')}
+async function addTable(){try{let d=await api('/tables',{method:'POST',body:JSON.stringify({})});tableCount=d.tableCount;render();renderAdminTables();toast('Mesa '+tableCount+' agregada')}catch(e){toast(e.message)}}
+async function removeTable(){if(tableCount<=1){toast('Debe quedar al menos una mesa');return}const t='Mesa '+tableCount;if(tableOpen(t)){toast(t+' está ocupada y no se puede quitar');return}if(!confirm('¿Quitar '+t+'?'))return;try{let d=await api('/tables/'+tableCount,{method:'DELETE'});tableCount=d.tableCount;if(selectedTable===t)selectedTable='';render();renderAdminTables();toast(t+' eliminada')}catch(e){toast(e.message)}}
+function renderAdminTables(){document.getElementById('admin-table-count').textContent=tableCount+' mesas';document.getElementById('admin-table-list').innerHTML=Array.from({length:tableCount},(_,i)=>{const n=i+1,t='Mesa '+n,o=openOrders().find(x=>x.table===t);return `<div class="admin-item"><div class="admin-item-info"><b>${t}</b><span>${o?'Ocupada · pedido '+o.id:'Disponible'}</span></div></div>`}).join('')}
+
+function isToday(o){let d=new Date(o.status==='Cerrado'?(o.closedAt||o.created):o.created),n=new Date();return d.getFullYear()===n.getFullYear()&&d.getMonth()===n.getMonth()&&d.getDate()===n.getDate()}
+function render(){renderTables();renderCart();renderProducts();renderMenu();let os=openOrders(),today=state.orders.filter(isToday),closedToday=today.filter(o=>o.status==='Cerrado');document.getElementById('stat-tables').textContent=`${new Set(os.map(o=>o.table)).size} / ${tableCount}`;document.getElementById('stat-orders').textContent=os.length;document.getElementById('stat-total').textContent=money(os.reduce((s,o)=>s+total(o),0));document.getElementById('stat-sales-today').textContent=money(today.reduce((s,o)=>s+total(o),0));document.getElementById('stat-orders-today').textContent=today.length;document.getElementById('sales-date').textContent=new Date().toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long',year:'numeric'});document.getElementById('sales-total').textContent=money(today.reduce((s,o)=>s+total(o),0));document.getElementById('sales-count').textContent=today.length;document.getElementById('sales-closed').textContent=closedToday.length;document.getElementById('today-orders').innerHTML=today.length?today.map(cardHTML).join(''):'<div class="empty">Todavía no hay pedidos registrados hoy.</div>';document.getElementById('nav-count').textContent=os.length?`(${os.length})`:'';document.getElementById('active-orders').innerHTML=os.length?os.map(cardHTML).join(''):'<div class="empty">No hay pedidos abiertos.</div>';document.getElementById('home-orders').innerHTML=os.length?os.slice(0,3).map(cardHTML).join(''):'<div class="empty">Todavía no hay pedidos. Elige una mesa para comenzar.</div>'}
+document.getElementById('today').textContent=new Date().toLocaleDateString('es-MX',{weekday:'short',day:'numeric',month:'short'});render();refreshOrders();setInterval(refreshOrders,15000);
+</script>
+</body></html>
